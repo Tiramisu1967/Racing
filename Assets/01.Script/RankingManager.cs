@@ -131,7 +131,15 @@ public class RankingManager : MonoBehaviour
             PlayerPrefs.SetString(i + "BestName", rankingEntries[i].Name);
         }
     }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("Stage1");
+    }
+
 }
+
+
 
 public class RankingEntry//int값과 string 값을 같이 사용하기 위해 선언한 클래스
 {
