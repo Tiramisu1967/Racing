@@ -17,10 +17,6 @@ public class ShopManager : MonoBehaviour
 
     public Canvas ShopCanvas;
 
-    public void Start()
-    {
-        Shop();
-    }
     public void ShopExit()
     {
         ShopCanvas.gameObject.SetActive(false);

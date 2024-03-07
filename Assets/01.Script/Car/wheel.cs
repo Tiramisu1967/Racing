@@ -73,6 +73,7 @@ public class wheel : MonoBehaviour
         {
             if(Vector3.Distance(TargetPoint.position,transform.position) <= 10 && WayPoints.childCount > WayIndex+1)
             {
+                Debug.Log(WayIndex);
                 WayIndex++;
                 TargetPoint = WayPoints.GetChild(WayIndex);
 
