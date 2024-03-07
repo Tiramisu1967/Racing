@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class AxleInfo
@@ -111,6 +112,17 @@ public class wheel : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             rb.AddForce(transform.forward * 20000, ForceMode.Impulse);
+        }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("destination"))
+        {
+            if(GameInstance.instance.Stage != 3)
+            {
+                SceneManager.LoadScene($"Stage{GameInstance.instance.Stage + 1}");
+            }
         }
     }
 }

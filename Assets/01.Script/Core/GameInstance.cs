@@ -13,6 +13,12 @@ public class GameInstance : MonoBehaviour
     public float RacingTime;
     public int Coin;
 
+    #region Wheel
+    public bool isDesertWheel;
+    public bool isMountainWheel;
+    public bool isDownTownWheel;
+    #endregion
+
     private void Awake()
     {
         if (instance == null)  // 단 하나만 존재하게끔
@@ -26,5 +32,8 @@ public class GameInstance : MonoBehaviour
         }
     }
 
-
+    private void Update()
+    {
+        RacingTime += Time.deltaTime;
+    }
 }

@@ -31,36 +31,14 @@ public class GameManager : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.F3))
             {
-                switch (GameInstance.instance.Stage)
-                {
-                    case 1:
-                        SceneManager.LoadScene("Stage1");
-                        break;
-                    case 2:
-                        SceneManager.LoadScene("Stage2");
-                        break;
-                    case 3:
-                        SceneManager.LoadScene("Stage3");
-                        break;
-                    default:
-                        break;
-                }
+                SceneManager.LoadScene($"Stage{GameInstance.instance.Stage}");
             }
             if (Input.GetKeyDown(KeyCode.F4))
             {
-                switch (GameInstance.instance.Stage)
-                {
-                    case 1:
-                        SceneManager.LoadScene("Stage2");
-                        break;
-                    case 2:
-                        SceneManager.LoadScene("Stage3");
-                        break;
-                    case 3:
-                        break;
-                    default:
-                        break;
-                }
+                if(GameInstance.instance.Stage != 3)
+            {
+                SceneManager.LoadScene($"Stage{GameInstance.instance.Stage}");
+            }
             }
         }
         if (Input.GetKeyDown(KeyCode.F5))
