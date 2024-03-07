@@ -7,16 +7,13 @@ using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
-
-    // Start is called before the first frame update
-    void Start()
+    public Canvas ShopCanvas;
+    public void ShopExit()
     {
-        
+        ShopCanvas.gameObject.SetActive(false);
     }
-
-    // Update is called once per frame
-    void Update()
+    public void Shop()
     {
-        
+        ShopCanvas.gameObject.SetActive(true);
     }
 }
