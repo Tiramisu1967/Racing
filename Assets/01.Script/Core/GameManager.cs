@@ -17,6 +17,11 @@ public class GameManager : MonoBehaviour
         Cheat();
     }
 
+    public void lose()
+    {
+        SceneManager.LoadScene($"Stage{GameInstance.instance.Stage}");
+    }
+
     public void Cheat()
     {
         if (!GameInstance.instance.isStop)

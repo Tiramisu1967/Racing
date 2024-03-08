@@ -19,6 +19,7 @@ public class GameInstance : MonoBehaviour
     public bool isDownTownWheel;
     #endregion
 
+
     private void Awake()
     {
         if (instance == null)  // 단 하나만 존재하게끔

@@ -77,7 +77,12 @@ public class wheel : MonoBehaviour
                 WayIndex++;
                 TargetPoint = WayPoints.GetChild(WayIndex);
 
-                if (WayPoints.childCount - 1 == WayIndex) WayIndex = 0;
+                if (WayPoints.childCount  == WayIndex)
+                {
+                    GameManager gameManager = FindAnyObjectByType<GameManager>();
+                    gameManager.lose();
+                    Debug.Log("dfgsdfsdg");
+                }
             }
 
             Vector3 waypointRelativeDistance = transform.InverseTransformPoint(TargetPoint.position);
@@ -116,14 +121,4 @@ public class wheel : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("destination"))
-        {
-            if(GameInstance.instance.Stage != 3)
-            {
-                SceneManager.LoadScene($"Stage{GameInstance.instance.Stage + 1}");
-            }
-        }
-    }
 }
