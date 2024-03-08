@@ -6,6 +6,7 @@ TagManager:
   tags:
   - destination
   - AI
+  - Item
   layers:
   - Default
   - TransparentFX

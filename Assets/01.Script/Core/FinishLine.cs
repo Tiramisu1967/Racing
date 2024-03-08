@@ -8,11 +8,11 @@ using UnityEngine;
 
 public class FinishLine : MonoBehaviour
 {
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider other)
     {
-        Debug.Log(collision.collider.tag);
+        Debug.Log(tag);
 
-        if (collision.collider.CompareTag("Player"))
+        if (CompareTag("Player"))
         {
             if (GameInstance.instance.Stage != 3 )
             {
