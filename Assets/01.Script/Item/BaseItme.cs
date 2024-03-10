@@ -8,16 +8,17 @@ using UnityEngine.UI;
 
 public class BaseItme : MonoBehaviour
 {
-   
-    public void OnTriggerEnter(Collider other)
+
+    private void OnTriggerEnter(Collider collision)
     {
-        if (CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("됨");
             Pick();
-            Destroy(this.gameObject);
-        } else if (CompareTag("Item"))
+        }
+        else
         {
-            Destroy(this.gameObject);
+            Debug.Log("누?구");
         }
     }
 

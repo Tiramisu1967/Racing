@@ -13,7 +13,7 @@ public class AxleInfo
     public bool steering;
 }
 
-public class wheel : MonoBehaviour
+public class BaseCar : MonoBehaviour
 {
     public List<AxleInfo> axleInfos;
     public float maxMotorTorque;
@@ -22,21 +22,23 @@ public class wheel : MonoBehaviour
 
     public Transform center;
 
-    public bool IsPlayer;
-
     public Transform WayPoints;
-    private Transform TargetPoint;
-    private int WayIndex = 0;
+    [HideInInspector] public Transform TargetPoint;
+    [HideInInspector] public int WayIndex = 0;
 
-    private Rigidbody rb;
+    [HideInInspector] public Rigidbody rb;
+
+    [HideInInspector] public float motor = 1000;
+    [HideInInspector] public float steering = 0;
+    [HideInInspector] public float Break = 0;
 
 
-    private void Start()
+
+    public void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = center.localPosition;
 
-        if (!IsPlayer) TargetPoint = WayPoints.GetChild(WayIndex);
     }
     // finds the corresponding visual wheel
     // correctly applies the transform
@@ -59,39 +61,12 @@ public class wheel : MonoBehaviour
 
     public void FixedUpdate()
     {
-        float motor = 1000;
-        float steering = 0;
-        float Break = 0;
 
-        if (IsPlayer)
-        {
-            motor = maxMotorTorque * Input.GetAxis("Vertical");
-            steering = maxSteeringAngle * Input.GetAxis("Horizontal");
-            Break = Input.GetKey(KeyCode.Space) ? BreakForce : 0;
-        }
-        else
-        {
-            if(Vector3.Distance(TargetPoint.position,transform.position) <= 10 && WayPoints.childCount > WayIndex+1)
-            {
-                Debug.Log(WayIndex);
-                WayIndex++;
-                TargetPoint = WayPoints.GetChild(WayIndex);
+        Movement();
+    }
 
-                if (WayPoints.childCount  == WayIndex)
-                {
-                    GameManager gameManager = FindAnyObjectByType<GameManager>();
-                    gameManager.lose();
-                    Debug.Log("dfgsdfsdg");
-                }
-            }
-
-            Vector3 waypointRelativeDistance = transform.InverseTransformPoint(TargetPoint.position);
-            waypointRelativeDistance /= waypointRelativeDistance.magnitude;
-            steering = (waypointRelativeDistance.x / waypointRelativeDistance.magnitude) * 25;
-
-        } //더러우니 수정 필요, 그대로 복사하지 말것. 절대.
-
-
+    public virtual void Movement()
+    {
         foreach (AxleInfo axleInfo in axleInfos)
         {
             if (axleInfo.steering)
@@ -112,13 +87,4 @@ public class wheel : MonoBehaviour
             ApplyLocalPositionToVisuals(axleInfo.rightWheel);
         }
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            rb.AddForce(transform.forward * 20000, ForceMode.Impulse);
-        }
-    }
-
 }

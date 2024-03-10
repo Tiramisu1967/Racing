@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 
@@ -14,19 +16,32 @@ public class ShopManager : MonoBehaviour
     public TextMeshProUGUI DesertText;
     public TextMeshProUGUI MountainText;
     public TextMeshProUGUI DownTownText;
+    public TextMeshProUGUI Coin;
+    
 
     public Canvas ShopCanvas;
 
     public void ShopExit()
     {
-        ShopCanvas.gameObject.SetActive(false);
+        if (!GameInstance.instance.isclear)
+        {
+            Time.timeScale = 1f;
+            ShopCanvas.gameObject.SetActive(false);
+        } 
+        else
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene($"Stage{GameInstance.instance.Stage+1}");
+        }
     }
     public void Shop()
     {
+         
         DesertText.text = $"{DesertWhellCoin}";
         MountainText.text = $"{MountainWhellCoin}";
         DownTownText.text = $"{DownTownWhellCoin}";
         ShopCanvas.gameObject.SetActive(true);
+        
     }
 
     public void Desert()
@@ -51,5 +66,9 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        Coin.text = $"Coin : {GameInstance.instance.Coin}";
+    }
 
 }

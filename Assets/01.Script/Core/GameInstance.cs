@@ -11,7 +11,9 @@ public class GameInstance : MonoBehaviour
     public bool isStop;
     public int Stage = 1;
     public float RacingTime;
+    public float[] StageTime;
     public int Coin;
+    public bool isclear;
 
     #region Wheel
     public bool isDesertWheel;
