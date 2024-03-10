@@ -16,6 +16,7 @@ public class AICar : BaseCar
 
             if (WayPoints.childCount == WayIndex)
             {
+                
                 GameManager gameManager = FindAnyObjectByType<GameManager>();
                 gameManager.lose();
                 Debug.Log("dfgsdfsdg");

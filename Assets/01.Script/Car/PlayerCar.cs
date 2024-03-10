@@ -9,6 +9,8 @@ using Unity.VisualScripting;
 
 public class PlayerCar : BaseCar
 {
+    private float Maxtime = 6f;
+    private float CurrenTime = 0f;
     public override void Movement()
     {
         motor = maxMotorTorque * Input.GetAxis("Vertical");
@@ -17,12 +19,31 @@ public class PlayerCar : BaseCar
         base.Movement();
     }
 
+    public IEnumerator Booster(int Speed)
+    {
+        float CurrentMotor = motor;
+        motor = motor * Speed;
+        yield return new WaitForSeconds(3f);
+        motor = CurrentMotor;
+        StopBoosterCoroutine();
+    }
+
+    public void StopBoosterCoroutine()
+    {
+        // 현재 진행 중인 Booster 코루틴을 중지
+        StopCoroutine("Booster");
+    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if(CurrenTime > 0)
         {
-            rb.AddForce(transform.forward * 20000, ForceMode.Impulse);
+            CurrenTime -= Time.deltaTime;
+        }
+        else if (Input.GetKeyDown(KeyCode.K))
+        {
+            CurrenTime = Maxtime;
+            StartCoroutine(Booster(20000));
         }
     }
 }

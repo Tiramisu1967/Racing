@@ -8,12 +8,14 @@ using UnityEngine.UI;
 
 public class BaseItme : MonoBehaviour
 {
-
+    [HideInInspector] 
+    public GameObject Player;
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("됨");
+            Player = collision.gameObject;
             Pick();
         }
         else
