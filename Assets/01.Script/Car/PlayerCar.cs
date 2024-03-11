@@ -46,4 +46,27 @@ public class PlayerCar : BaseCar
             StartCoroutine(Booster(20000));
         }
     }
+
+    public void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Slow"))
+        {
+            SlowMap();
+        }
+        if (collision.gameObject.CompareTag("Map"))
+        {
+            MapCheck();
+        }
+    }
+
+    public void SlowMap()
+    {
+        Debug.Log("ssssss");
+        motor = 100;
+    }
+
+    public void MapCheck()
+    {
+        
+    }
 }

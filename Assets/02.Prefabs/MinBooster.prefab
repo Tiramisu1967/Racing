@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  Speed: 10
+  Speed: 25000
 --- !u!65 &8704700914129330141
 BoxCollider:
   m_ObjectHideFlags: 0

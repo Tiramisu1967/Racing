@@ -7,7 +7,9 @@ public class Booster : BaseItme
     public int Speed;
     public override void Pick()
     {
-        StartCoroutine(Player.GetComponent<PlayerCar>().Booster(Speed *1000));
+        Rigidbody CarRigid = Player.GetComponent<Rigidbody>();
+
+        CarRigid.AddForce(Player.transform.forward * Speed, ForceMode.Impulse);
         base.Pick();
     }
 }

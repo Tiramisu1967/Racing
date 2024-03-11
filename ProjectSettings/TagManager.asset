@@ -7,6 +7,8 @@ TagManager:
   - destination
   - AI
   - Item
+  - Slow
+  - Map
   layers:
   - Default
   - TransparentFX
