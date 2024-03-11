@@ -981,6 +981,7 @@ MonoBehaviour:
   motor: 1000
   steering: 0
   Break: 0
+  Speed: 1
 --- !u!114 &406500788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1955,6 +1956,7 @@ MonoBehaviour:
   DesertWhellCoin: 15000000
   MountainWhellCoin: 80000000
   DownTownWhellCoin: 115000000
+  EnegineCoin: 
   DesertText: {fileID: 1391096437}
   MountainText: {fileID: 572391920}
   DownTownText: {fileID: 1614476540}
@@ -3633,6 +3635,9 @@ MonoBehaviour:
   StageTime: []
   Coin: 0
   isclear: 0
+  isFreeShop: 0
+  CheatShop: {fileID: 316277447890431153, guid: d6c3329e64ab4f347ba948b84a303033, type: 3}
+  PlayerPoint: {fileID: 0}
   isDesertWheel: 0
   isMountainWheel: 0
   isDownTownWheel: 0

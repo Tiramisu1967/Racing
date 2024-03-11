@@ -15,7 +15,8 @@ public class GameInstance : MonoBehaviour
     public int Coin;
     public bool isclear;
     public bool isFreeShop;
-
+    public Canvas CheatShop;
+    [HideInInspector] public GameObject PlayerPoint;
     #region Wheel
     public bool isDesertWheel;
     public bool isMountainWheel;

@@ -11,11 +11,9 @@ public class PlayerCar : BaseCar
 {
     private float Maxtime = 6f;
     private float CurrenTime = 0f;
-    [HideInInspector] 
-    public float Speed = 1;
     public override void Movement()
     {
-        motor = maxMotorTorque * Input.GetAxis("Vertical") * Speed;
+        motor = maxMotorTorque * Input.GetAxis("Vertical");
         steering = maxSteeringAngle * Input.GetAxis("Horizontal");
         Break = Input.GetKey(KeyCode.Space) ? BreakForce : 0;
         base.Movement();
@@ -38,6 +36,7 @@ public class PlayerCar : BaseCar
 
     private void Update()
     {
+        GameInstance.instance.PlayerPoint = this.gameObject;
         if(CurrenTime > 0)
         {
             CurrenTime -= Time.deltaTime;
@@ -63,8 +62,8 @@ public class PlayerCar : BaseCar
 
     public void SlowMap()
     {
-        float tmp = maxMotorTorque;
-        maxMotorTorque  = 0;
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.velocity *= 0.5f;
         Debug.Log("ssssss");
     }
 
@@ -78,7 +77,8 @@ public class PlayerCar : BaseCar
         {}
         else
         {
-            //속도 줄이기
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.velocity *= 0.5f;
         }
     }
 }
