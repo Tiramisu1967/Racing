@@ -13,6 +13,7 @@ public class ShopManager : MonoBehaviour
     public int DesertWhellCoin;
     public int MountainWhellCoin;
     public int DownTownWhellCoin;
+    public int[] EnegineCoin;
     public TextMeshProUGUI DesertText;
     public TextMeshProUGUI MountainText;
     public TextMeshProUGUI DownTownText;
@@ -46,23 +47,57 @@ public class ShopManager : MonoBehaviour
 
     public void Desert()
     {
-        if(GameInstance.instance.Coin >= DesertWhellCoin && !GameInstance.instance.isDesertWheel)
+        if(!GameInstance.instance.isDesertWheel)
         {
-            GameInstance.instance.isDesertWheel = true;
+            if (!GameInstance.instance.isFreeShop)
+            {
+             if(GameInstance.instance.Coin >= DesertWhellCoin)
+                {
+                GameInstance.instance.isDesertWheel = true;
+
+                }
+            }
+            else
+            {
+                GameInstance.instance.isDesertWheel = true;
+            }
         }
     }
     public void Mountain()
     {
-        if (GameInstance.instance.Coin >= MountainWhellCoin && !GameInstance.instance.isMountainWheel)
+
+        if (!GameInstance.instance.isMountainWheel)
         {
-            GameInstance.instance.isMountainWheel = true;
+            if (!GameInstance.instance.isFreeShop)
+            {
+                if (GameInstance.instance.Coin >= MountainWhellCoin)
+                {
+                    GameInstance.instance.isMountainWheel = true;
+
+                }
+            }
+            else
+            {
+                GameInstance.instance.isMountainWheel = true;
+            }
         }
     }
     public void DownTown()
     {
-        if (GameInstance.instance.Coin >= DownTownWhellCoin && !GameInstance.instance.isDownTownWheel)
+        if (!GameInstance.instance.isDownTownWheel)
         {
-            GameInstance.instance.isDownTownWheel = true;
+            if (!GameInstance.instance.isFreeShop)
+            {
+                if (GameInstance.instance.Coin >= DownTownWhellCoin)
+                {
+                    GameInstance.instance.isDownTownWheel = true;
+
+                }
+            }
+            else
+            {
+                GameInstance.instance.isDownTownWheel = true;
+            }
         }
     }
 
@@ -71,4 +106,38 @@ public class ShopManager : MonoBehaviour
         Coin.text = $"Coin : {GameInstance.instance.Coin}";
     }
 
+    public void Engine6()
+    {
+        if (!GameInstance.instance.isDownTownWheel)
+        {
+            if (!GameInstance.instance.isFreeShop)
+            {
+                if (GameInstance.instance.Coin >= EnegineCoin[0])
+                {
+                    //대충 속도 올리는
+                }
+            }
+            else
+            {
+                //대충 속도 올리는
+            }
+        }
+    }
+    public void Engine8()
+    {
+        if (!GameInstance.instance.isDownTownWheel)
+        {
+            if (!GameInstance.instance.isFreeShop)
+            {
+                if (GameInstance.instance.Coin >= EnegineCoin[0])
+                {
+                    //대충 속도 올리는
+                }
+            }
+            else
+            {
+                //대충 속도 올리는
+            }
+        }
+    }
 }

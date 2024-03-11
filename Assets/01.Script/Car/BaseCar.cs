@@ -28,7 +28,7 @@ public class BaseCar : MonoBehaviour
 
     [HideInInspector] public Rigidbody rb;
 
-    [HideInInspector] public float motor = 1000;
+   public float motor = 1000;
     [HideInInspector] public float steering = 0;
     [HideInInspector] public float Break = 0;
 

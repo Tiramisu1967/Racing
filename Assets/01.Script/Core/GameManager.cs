@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.F2))
             {
-
+                GameInstance.instance.isFreeShop = true;
             }
             if (Input.GetKeyDown(KeyCode.F3))
             {

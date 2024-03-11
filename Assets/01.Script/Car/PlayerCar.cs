@@ -11,9 +11,11 @@ public class PlayerCar : BaseCar
 {
     private float Maxtime = 6f;
     private float CurrenTime = 0f;
+    [HideInInspector] 
+    public float Speed = 1;
     public override void Movement()
     {
-        motor = maxMotorTorque * Input.GetAxis("Vertical");
+        motor = maxMotorTorque * Input.GetAxis("Vertical") * Speed;
         steering = maxSteeringAngle * Input.GetAxis("Horizontal");
         Break = Input.GetKey(KeyCode.Space) ? BreakForce : 0;
         base.Movement();
@@ -55,18 +57,28 @@ public class PlayerCar : BaseCar
         }
         if (collision.gameObject.CompareTag("Map"))
         {
-            MapCheck();
+            MapCheck(collision);
         }
     }
 
     public void SlowMap()
     {
+        float tmp = maxMotorTorque;
+        maxMotorTorque  = 0;
         Debug.Log("ssssss");
-        motor = 100;
     }
 
-    public void MapCheck()
+    public void MapCheck(Collision collision)
     {
-        
+        if(collision.gameObject.name == "Desert" && GameInstance.instance.isDesertWheel)
+        {}
+        else if (collision.gameObject.name == "Mountain" && GameInstance.instance.isMountainWheel)
+        {}
+        else if (collision.gameObject.name == "DownTown" && GameInstance.instance.isDownTownWheel)
+        {}
+        else
+        {
+            //속도 줄이기
+        }
     }
 }
