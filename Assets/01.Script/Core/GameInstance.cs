@@ -9,12 +9,13 @@ public class GameInstance : MonoBehaviour
 {
     public static GameInstance instance;
     public bool isStop;
+    public int Score;
     public int Stage = 1;
     public float RacingTime;
     public float[] StageTime;
     public int Coin;
-    public bool isclear;
     public bool isFreeShop;
+    public bool isclear;
     public Canvas CheatShop;
     [HideInInspector] public GameObject PlayerPoint;
     #region Wheel

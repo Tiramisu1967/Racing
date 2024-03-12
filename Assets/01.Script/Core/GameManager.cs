@@ -42,7 +42,8 @@ public class GameManager : MonoBehaviour
             {
                 if (GameInstance.instance.Stage != 3)
                 {
-                    SceneManager.LoadScene($"Stage{GameInstance.instance.Stage + 1}");
+                    GameInstance.instance.Stage += 1;
+                    SceneManager.LoadScene($"Stage{GameInstance.instance.Stage}");
                 }
             }
         }

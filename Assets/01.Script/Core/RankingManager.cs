@@ -80,7 +80,7 @@ public class RankingManager : MonoBehaviour
         }
 
         // 현재 플레이어의 점수와 이름을 가져와 랭킹에 등록
-        float currentPlayerScore = GameInstance.instance.RacingTime;
+        float currentPlayerScore = GameInstance.instance.Score;
         string currentPlayerName = CurrentPlayerInitial;
 
         // 현재 플레이어의 점수가 랭킹에 등록 가능한지 확인
@@ -110,7 +110,7 @@ public class RankingManager : MonoBehaviour
 
     void UpdateRankingUI()// CurrentPlayerScore text에 CurrentPlayerInitial, GameInstance.instance.Score의 값을 순서대로 입력
     {
-        CurrentPlayerScore.text = $"{CurrentPlayerInitial} {GameInstance.instance.RacingTime}";
+        CurrentPlayerScore.text = $"{CurrentPlayerInitial} {GameInstance.instance.Score}";
 
         for (int i = 0; i < Rankings.Length; i++)//MainMenuRanking에 SortRanking(); 호출 다음 구문과 같음
         {
@@ -134,6 +134,14 @@ public class RankingManager : MonoBehaviour
 
     public void StartGame()
     {
+        if(GameInstance.instance != null)
+        {
+                GameInstance.instance.Score = 0;
+            GameInstance.instance.Stage = 1;
+            GameInstance.instance.RacingTime = 0f;
+            GameInstance.instance.Coin = 0;
+            GameInstance.instance.isFreeShop = false;
+}
         SceneManager.LoadScene("Stage1");
     }
 
