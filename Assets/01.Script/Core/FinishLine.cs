@@ -9,13 +9,14 @@ using Unity.VisualScripting;
 
 public class FinishLine : MonoBehaviour
 {
+    public GameObject Shop;
     public void OnTriggerEnter(Collider collider)
     {
         Debug.Log(tag);
 
         if (collider.gameObject.CompareTag("Player"))
         {
-            if (GameInstance.instance.Stage != 3 )
+            if (GameInstance.instance.Stage + 1 <= 3 )
             {
                 if (100 - (int)GameInstance.instance.RacingTime > 0)
                 {
@@ -25,9 +26,14 @@ public class FinishLine : MonoBehaviour
 
                 GameInstance.instance.StageTime[GameInstance.instance.Stage -1] = GameInstance.instance.RacingTime;
                 GameInstance.instance.Stage += 1;
-                ShopManager shopManager = GetComponent<ShopManager>();
+                ShopManager shopManager = Shop.GetComponent<ShopManager>();
+             
                 shopManager.Shop();
-                SceneManager.LoadScene($"Stage{GameInstance.instance.Stage}");
+                GameInstance.instance.isclear = true;
+            }
+            else
+            {
+                SceneManager.LoadScene($"Result");
             }
         }
         else

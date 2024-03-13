@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,7 +31,8 @@ public class ShopManager : MonoBehaviour
         else
         {
             Time.timeScale = 1f;
-            SceneManager.LoadScene($"Stage{GameInstance.instance.Stage+1}");
+            GameInstance.instance.isclear = false;
+            SceneManager.LoadScene($"Stage{GameInstance.instance.Stage}");
         }
     }
     public void Shop()
